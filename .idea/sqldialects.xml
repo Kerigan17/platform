@@ -2,5 +2,7 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/backend/src/controllers/students.controller.ts" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/backend/src/db/lessons.ts" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/backend/src/db/students.ts" dialect="GenericSQL" />
   </component>
 </project>

@@ -4,7 +4,7 @@ const db_1 = require("../config/db");
 const selectAll = () => {
     return new Promise((resolve, reject) => {
         db_1.connection.getConnection((err, conn) => {
-            conn.query("select * from students where teacher_id=1", (err, resultSet) => {
+            conn.query("select * from lessons where teacher_id=1", (err, resultSet) => {
                 conn.release();
                 if (err) {
                     return reject(err);

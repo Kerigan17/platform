@@ -1,25 +1,18 @@
-import { Router, Request, Response } from 'express';
-import { Student } from '../models/student';
-import { connection } from '../config/db';
-import { QueryError, PoolConnection } from 'mysql2';
+import students from "../db/students";
+import { Request, Response } from 'express';
 
 const getAll = (req: Request, res: Response) => {
-    connection.getConnection((err, conn: PoolConnection) => {
-        conn.query("select * from students", (err: QueryError, resultSet: Student[]) => {
-            conn.release();
-
-            if (err) {
-                res.status(500).send({
-                    message: 'INTERNAL SERVER ERROR',
-                    result: null
-                });
-            } else {
-                res.status(200).send({
-                    message: 'OK',
-                    result: resultSet
-                });
-            }
+    students.selectAll().then(students => { // .then for async call
+        res.status(200).send({
+            message: 'OK',
+            result: students
         })
-    });
+    }).catch(err => {
+        res.status(500).send({
+            message: 'DATABASE ERROR',
+            error: err.code
+        })
+    })
 }
-export default { getAll }
+
+export default {getAll}

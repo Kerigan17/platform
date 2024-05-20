@@ -1,23 +1,19 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const db_1 = require("../config/db");
+const students_1 = __importDefault(require("../db/students"));
 const getAll = (req, res) => {
-    // res.status(200).send(studentsList);
-    db_1.connection.getConnection((err, conn) => {
-        conn.query("select * from students", (err, resultSet) => {
-            conn.release();
-            if (err) {
-                res.status(500).send({
-                    message: 'INTERNAL SERVER ERROR',
-                    result: null
-                });
-            }
-            else {
-                res.status(200).send({
-                    message: 'OK',
-                    result: resultSet
-                });
-            }
+    students_1.default.selectAll().then(students => {
+        res.status(200).send({
+            message: 'OK',
+            result: students
+        });
+    }).catch(err => {
+        res.status(500).send({
+            message: 'DATABASE ERROR',
+            error: err.code
         });
     });
 };

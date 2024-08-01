@@ -6,11 +6,13 @@
 body {
     display: flex;
     justify-content: center;
-    background: linear-gradient(45deg, #252f53, #5ac8be);
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
     height: 100vh;
     color: white;
     font-family: Montserrat-Light, sans-serif;
     font-weight: 100;
+    animation: gradient 15s ease infinite;
 }
 .login__title {
     text-align: center;
@@ -73,6 +75,10 @@ body {
     display: inline-flex;
     align-items: center;
     user-select: none;
+    position: relative;
+}
+.form__remember+label:hover {
+    cursor: pointer;
 }
 .form__remember+label::before {
     content: '';
@@ -81,38 +87,51 @@ body {
     height: 1em;
     flex-shrink: 0;
     flex-grow: 0;
-    border: 1px solid #adb5bd;
+    border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 0.25em;
     margin-right: 0.5em;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 50% 50%;
 }
-.form__remember:checked+label::before {
-    border-color: #0b76ef;
-    background-color: #0b76ef;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+.form__remember+label::after {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border-radius: 0.25em;
+    margin-right: 0.5em;
+    position: absolute;
+}
+.form__remember:checked+label::after {
+    content: url("../../../public/images/login/checked.svg");
+    font-size: 28px;
+    top: -10px;
+    left: -3px;
 }
 .form__remember:hover+label::before {
     cursor: pointer;
 }
-.form__remember:not(:disabled):not(:checked)+label:hover::before {
-    border-color: #b3d7ff;
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    transition: background-color 5000s ease-in-out 0s;
 }
-/* стили для активного состояния чекбокса (при нажатии на него) */
-.form__remember:not(:disabled):active+label::before {
-    background-color: #b3d7ff;
-    border-color: #b3d7ff;
-}
-/* стили для чекбокса, находящегося в фокусе */
-.form__remember:focus+label::before {
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-/* стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked */
-.form__remember:focus:not(:checked)+label::before {
-    border-color: #80bdff;
-}
-/* стили для чекбокса, находящегося в состоянии disabled */
-.form__remember:disabled+label::before {
-    background-color: #e9ecef;
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }

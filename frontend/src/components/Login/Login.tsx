@@ -16,8 +16,7 @@ function Login() {
                 </div>
                 <div className="form__group remember">
                     <input className='form__remember' id='remember' type="checkbox"/>
-                    <label htmlFor="remember"></label>
-                    <label >Remember me</label>
+                    <label htmlFor="remember">Remember me</label>
                 </div>
                 <button className='form__btn'>Login</button>
             </form>

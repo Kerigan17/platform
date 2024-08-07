@@ -1,22 +1,22 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
-interface LoginState {
+interface AuthState {
     login: string;
     password: string;
     loggedIn: boolean;
 }
 
-const initialState: LoginState = {
+const initialState: AuthState = {
     login: "",
     password: "",
     loggedIn: false
 }
 
-const loginSlice = createSlice({
-    name: "login",
+const authSlice = createSlice({
+    name: "auth",
     initialState,
     reducers: {
-        login(state){
+        checkTeacher(state){
 
         },
         updateLogin(state, action: PayloadAction<string>){
@@ -29,5 +29,5 @@ const loginSlice = createSlice({
 
 })
 
-export const {login, updateLogin, updatePassword} = loginSlice.actions;
-export default loginSlice.reducer;
+export const {checkTeacher, updateLogin, updatePassword} = authSlice.actions;
+export default authSlice.reducer;

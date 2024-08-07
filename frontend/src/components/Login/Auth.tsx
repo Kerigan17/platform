@@ -1,21 +1,24 @@
-import './Login.css';
+import './Auth.css';
 import {useAppDispatch, useAppSelector} from "../../app/hooks.ts";
-import {updateLogin, updatePassword} from "../../features/login/login.slice.ts";
+import {checkTeacher, updateLogin, updatePassword} from "../../features/login/auth.slice.ts";
 
-function Login() {
+function Auth() {
 
     const dispatch = useAppDispatch();
 
-    const login = useAppSelector((state)=>state.login.login);
-    const password = useAppSelector((state)=>state.login.password);
+    const login = useAppSelector((state)=>state.auth.login);
+    const password = useAppSelector((state)=>state.auth.password);
 
-    console.log(password);
     function handleLoginChange(newLogin: string){
         dispatch(updateLogin(newLogin));
     }
 
     function handlePasswordChange(newPassword: string){
         dispatch(updatePassword(newPassword));
+    }
+
+    function handleSubmit(){
+        dispatch(checkTeacher());
     }
 
     return (
@@ -39,10 +42,11 @@ function Login() {
                     <input className='form__remember' id='remember' type="checkbox"/>
                     <label htmlFor="remember">Remember me</label>
                 </div>
-                <button className='form__btn'>Login</button>
+                <button className='form__btn' type={'button'}
+                        onClick={handleSubmit}>Login</button>
             </form>
         </div>
     )
 }
 
-export default Login
+export default Auth

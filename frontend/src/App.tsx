@@ -1,10 +1,10 @@
 import './App.css'
-import Login from "./components/Login/Login.tsx";
+import Auth from "./components/Login/Auth.tsx";
 
 function App() {
     return (
         <>
-            <Login />
+            <Auth />
         </>
     )
 }

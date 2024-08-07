@@ -1,6 +1,6 @@
 @font-face {
     font-family: Montserrat-Light;
-    src: url("../../../public/fonts/Montserrat-Light.ttf");
+    src: url("/fonts/Montserrat-Light.ttf");
 }
 
 body {
@@ -103,7 +103,7 @@ body {
     position: absolute;
 }
 .form__remember:checked+label::after {
-    content: url("../../../public/images/login/checked.svg");
+    content: url("/images/login/checked.svg");
     font-size: 28px;
     top: -10px;
     left: -3px;

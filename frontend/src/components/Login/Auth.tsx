@@ -1,10 +1,12 @@
 import './Auth.css';
-import {useAppDispatch, useAppSelector} from "../../app/hooks.ts";
-import {checkTeacher, updateLogin, updatePassword} from "../../features/login/auth.slice.ts";
+import {useAppSelector} from "../../app/hooks.ts";
+import {submitTeacherAuth, updateLogin, updatePassword} from "../../features/login/auth.slice.ts";
+import {useDispatch} from "react-redux";
+import {AppDispatch} from "../../app/store.ts";
 
 function Auth() {
 
-    const dispatch = useAppDispatch();
+    const dispatch: AppDispatch = useDispatch();
 
     const login = useAppSelector((state)=>state.auth.login);
     const password = useAppSelector((state)=>state.auth.password);
@@ -12,13 +14,18 @@ function Auth() {
     function handleLoginChange(newLogin: string){
         dispatch(updateLogin(newLogin));
     }
-
     function handlePasswordChange(newPassword: string){
         dispatch(updatePassword(newPassword));
     }
+    const handleSubmit = () => {
+        console.log(login)
+        console.log(password)
 
-    function handleSubmit(){
-        dispatch(checkTeacher());
+        if (login && password) {
+            dispatch(submitTeacherAuth({ login, password }));
+        } else {
+            console.error('Login and password must be provided');
+        }
     }
 
     return (

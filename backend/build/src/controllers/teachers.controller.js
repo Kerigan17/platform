@@ -17,10 +17,11 @@ class TeachersController {
     findOne(request, response) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(request.body);
+            let { login, password } = request.body;
             try {
-                teacher_repository_1.default.retrieveByLogin({ login: "dmitry", password: "12345" })
+                teacher_repository_1.default.retrieveByLogin({ login: login, password: password })
                     .then((teachers) => {
-                    response.status(200).json({ success: true, data: teachers[0] });
+                    response.status(200).json(teachers[0]);
                 });
             }
             catch (e) {

@@ -1,7 +1,7 @@
 export const config = {
     HOST: "localhost",
     USER: "root",
-    PASSWORD: "SQl10879",
+    PASSWORD: "Alex109728Mik",
     DB: "platform",
     pool: {
         max: 5,

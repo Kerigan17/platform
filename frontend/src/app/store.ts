@@ -3,9 +3,9 @@ import authReducer from '../features/login/auth.slice.ts'
 
 export const store = configureStore({
     reducer: {
-        auth: authReducer,
+        auth: authReducer
     },
 });
 
 export type AppDispatch = typeof store.dispatch;
-export type RootState = ReturnType<typeof store.dispatch>;
+export type RootState = ReturnType<typeof store.getState>;

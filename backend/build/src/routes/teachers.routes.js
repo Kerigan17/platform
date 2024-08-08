@@ -13,7 +13,7 @@ class TutorialRoutes {
     }
     intializeRoutes() {
         // Retrieve all Tutorials
-        this.router.get("/login", this.controller.findOne);
+        this.router.post("/login", this.controller.findOne);
     }
 }
 exports.default = new TutorialRoutes().router;

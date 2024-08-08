@@ -4,7 +4,7 @@ exports.dialect = exports.config = void 0;
 exports.config = {
     HOST: "localhost",
     USER: "root",
-    PASSWORD: "SQl10879",
+    PASSWORD: "Alex109728Mik",
     DB: "platform",
     pool: {
         max: 5,

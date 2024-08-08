@@ -12,7 +12,9 @@ export default class Server {
 
     private config(app: Application): void {
         const corsOptions: CorsOptions = {
-            origin: "http://localhost:8081"
+            origin: "http://localhost:5173", // Разрешаем запросы с вашего фронтенда
+            methods: ['GET', 'POST', 'PUT', 'DELETE'], // Указываем методы, которые разрешены
+            allowedHeaders: ['Content-Type', 'Authorization'],
         };
 
         app.use(cors(corsOptions));

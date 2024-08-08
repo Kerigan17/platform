@@ -1,5 +1,4 @@
 import {Model, Table, Column, DataType} from "sequelize-typescript";
-import {SetOptions} from "sequelize";
 
 @Table({
     tableName: "teachers",
